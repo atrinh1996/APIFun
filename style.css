@@ -1,0 +1,83 @@
+/* Styling for HW10: Fun with API */
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    margin: auto;
+    width: 70%;
+    padding: 20px;
+}
+
+/* Align page content */
+.block, #displayPick, #foot{
+    margin: 20px;
+    border-bottom: 2px dotted #000;
+    padding-bottom: 20px;
+}
+
+#displayPick p[name='msg']{
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+#displayPick form{
+    margin-top: 20px;
+}
+
+form p{
+    display: block;
+    margin: 10px;
+}
+
+#foods, #reactions, h2{
+    margin-bottom: 10px;
+}
+
+
+/* Style display buttons */
+#displayOptions{
+    display: flex;
+}
+
+#displayOptions li{
+    list-style: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#displayOptions input, #queryBtn{
+    background-color: inherit;
+    border-radius: 25px;
+    border-width: 3px;
+    padding: 5px;
+    font-weight: bold;
+}
+
+#displayOptions input:hover{
+    opacity: 0.65;
+}
+
+#foot ul{
+    padding-left: 20px;
+}
+
+#foot li{
+    margin-bottom: 10px;
+}
+
+
+@media(max-width:900px){
+    .container{width:95%;}
+    #displayOptions{display: block;}
+    #displayOptions li{margin-bottom: 10px;}
+    .block, #displayPick{margin: 0;}
+}
+
+/********** Borders for box model **********/
+/* .container{border: 1px solid red} */
+/* .block{border: 1px solid blue} */
+/* .displayPick{border: 1px solid green} */
+/* #rawData, #foods, #reactions{border: 1px solid purple} */

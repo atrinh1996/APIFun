@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script language="javascript" src="foodDataHandle.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script language="javascript">
+        // Request food warnings for Hood brand from 2015 - 2020
+        let defaultQuery = 'https://api.fda.gov/food/event.json?api_key=GSBBphdbPxMhJcPEeQbYvbmNJ0iS3QU9cjIJHBA5&search=products.name_brand:"hood"+AND+date_started:[20150101+TO+20210101]&limit=5';
+    </script>
+
+    <title>HW10 - API Fun</title>
+
+</head>
+<body onload="requestData(defaultQuery)">
+
+    <div class="container">
+        <h1>Food Warnings</h1>
+
+        <div id="displayPick"> <!-- row of display options as buttons -->
+            <p name="msg">Please pick a display option.</p>
+            <ul id="displayOptions">
+                <li><input type="button" name="raw" value="Show Raw Data"></li>
+                <li><input type="button" name="data" value="Show Friendly Format"></li>
+                <li><input type="button" name="all" value="Show All Sections"></li>
+            </ul> <!-- end of displayOptions -->
+
+            <form id="queryForm" action="">
+                <p>Search by Brand Name: <input type="text" name="brand" id="brand"></p>
+
+                <p>Start Date: <input type="date" name="start" id="start" placeholder="YYYY/MM/DD"></p>
+
+                <p>Date: <input type="date" name="end" id="end" placeholder="YYYY/MM/DD"></p>
+
+                <p><input type="button" name="queryBtn" id="queryBtn" value="Search"></p>
+            </form> <!-- end of queryForm -->
+        </div> <!-- end of displayPick -->
+
+        <div class="block"> <!-- Display Raw Data -->
+            <h2>Raw Data</h2>
+            <p id="rawData">Something.... Something...</p>
+        </div> <!-- end of block -->
+
+        <div class="block"> <!-- Display information neatly -->
+            <h2>Food List</h2>
+
+            <h3>Adverse reactions from these foods:</h3>
+            <p id="foods"></p>
+
+            <h3>Adverse symptoms:</h3>
+            <p id="reactions"></p>
+        </div> <!-- end of block -->
+
+        <div id="foot">
+            <h2>About</h2>
+            <p>
+                Information on this page comes from the <a href="https://open.fda.gov/apis/" target="_blank">openFDA API</a>, which has public FDA data on food, drugs, and devices. This page will specifically request information from the openFDA food adverse event API. This API returns data from <a href="https://open.fda.gov/data/caers/" target="_blank">Center for Food Safety and Applied Nutrition Adverse Event Reporting System (CAERS)</a>. I found this API from an <a href="https://github.com/public-apis/public-apis">online resource</a> for public API's.
+            </p> <br>
+            <p>
+                This page creates API requests for food (adverse food reactions) by brand name (products.name_brand) and/or data range (date_started), so users could see what adverse reactions were reports for what foods by the brand and date reported. Use the search tools above.
+            </p> <br>
+            <p>
+                Applications:
+                <ul>
+                    <li>Quality Research: This would be useful for someone wanting to research on the quality of a food brand (information that might be of interest to the public), because we can see what symptoms are reported for products from their brand and for how long/often.  This can inform brands' business decision.</li>
+                    <li>Public Health: Food/Drug/Device safety and recalls are also an important avenue of information to the general public; This can help educate consumer's choice for particular food brands.</li>
+                </ul>
+            </p>
+        </div> <!-- end foot -->
+    </div> <!-- end of container -->
+</body>
+</html>
